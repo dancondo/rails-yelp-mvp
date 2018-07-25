@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
       if @restaurant.save
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
       else
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
@@ -37,7 +37,7 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroyed
     @restaurant.destroy
     respond_to do |format|
       format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
